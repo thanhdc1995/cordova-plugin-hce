@@ -16,7 +16,7 @@ public class CordovaApduService extends HostApduService {
     private static HCEPlugin hcePlugin;
     private static CordovaApduService cordovaApduService;
 
-    public void setHCEPlugin(HCEPlugin _hcePlugin) {
+    static void setHCEPlugin(HCEPlugin _hcePlugin) {
         cordovaApduService = this;
         hcePlugin = _hcePlugin;
     }
