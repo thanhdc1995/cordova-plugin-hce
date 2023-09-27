@@ -43,16 +43,12 @@ public class HCEPlugin extends CordovaPlugin {
 
             byte[] data = args.getArrayBuffer(0);
 
-            CordovaApduService.sendResponseApdu(data);
-
-            callbackContext.success();
-
-            // if (CordovaApduService.sendResponseApdu(data)) {
-            //     callbackContext.success();
-            // } else {
-            //     // TODO This message won't make sense to developers.
-            //     callbackContext.error("Missing Reference to CordovaApduService.");
-            // }
+            if (CordovaApduService.sendResponse(data)) {
+                callbackContext.success();
+            } else {
+                // TODO This message won't make sense to developers.
+                callbackContext.error("Missing Reference to CordovaApduService.");
+            }
 
         } else if (action.equalsIgnoreCase(REGISTER_DEACTIVATED_CALLBACK)) {
 
