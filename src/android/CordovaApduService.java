@@ -22,7 +22,6 @@ public class CordovaApduService extends HostApduService {
     }
 
     static boolean sendResponse(byte[] data) {
-        cordovaApduService = new CordovaApduService();
         
         if (cordovaApduService != null) {
             cordovaApduService.sendResponseApdu(data);
