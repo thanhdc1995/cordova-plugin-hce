@@ -16,8 +16,15 @@ public class CordovaApduService extends HostApduService {
     private static HCEPlugin hcePlugin;
     private static CordovaApduService cordovaApduService;
 
+    @Override
+    public void onCreate() {
+        super.onCreate();
+        cordovaApduService = this;
+    }
+
     static void setHCEPlugin(HCEPlugin _hcePlugin) {
         hcePlugin = _hcePlugin;
+
     }
 
     static boolean sendResponse(byte[] data) {
@@ -53,7 +60,7 @@ public class CordovaApduService extends HostApduService {
         Log.i(TAG, "Received APDU: " + ByteArrayToHexString(commandApdu));
 
         // save a reference in static variable (hack)
-        cordovaApduService = this;
+        // cordovaApduService = this;
 
         if (hcePlugin != null) {
             hcePlugin.sendCommand(commandApdu);
